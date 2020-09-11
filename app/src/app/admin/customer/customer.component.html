@@ -1,0 +1,43 @@
+<div class="container">
+  <table class="table">
+     <thead class="thead-dark">
+        <tr>
+           <th>Id</th>
+           <th>first_name</th>
+           <th>last_name</th>
+           <th>user_name</th>
+           <th>Password</th>
+           <th>Time_inserted</th>
+           <th>Confirmation_code</th>
+           <th>Time_confirmed</th>
+           <th>Contact_email</th>
+           <th>Contact_phone</th>
+           <th>City_id</th>
+           <th>Address</th>
+           <th>Delivery_city_id</th>
+           <th>Delivery_address</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr *ngFor = "let customer of customers">
+           <td>{{customer.Id}}</td>
+           <td>{{customer.first_name}}</td>
+           <td>{{customer.last_name}}</td>
+           <td>{{customer.user_name}}</td>
+           <td>{{customer.Password}}</td>
+           <td>{{customer.time_inserted}}</td>
+           <td>{{customer.Confirmation_code}}</td>
+           <td>{{customer.time_confirmed}}</td>
+           <td>{{customer.contact_email}}</td>
+           <td>{{customer.contact_phone}}</td>
+           <td>{{customer.city_id}}</td>
+           <td>{{customer.address}}</td>
+           <td>{{customer.delivery_city_id}}</td>
+           <td>{{customer.delivery_address}}</td>
+           <td><button class="btn btn-sm btn-info">edit</button></td>
+           <td><button class="btn btn-sm btn-danger"  (click)="deleteCustomer(customer.Id)">delete</button></td>
+        </tr>
+     </tbody>
+  </table>
+
+

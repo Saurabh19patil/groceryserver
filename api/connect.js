@@ -58,3 +58,4 @@ connection.query("select * from item", function(error, rows) {
  	console.log('successful query');
  }
 });
+});

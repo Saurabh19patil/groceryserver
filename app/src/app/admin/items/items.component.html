@@ -1,0 +1,104 @@
+<!-- create table for items -->
+<div class="container">
+  <table class="table">
+     <thead class="thead-dark">
+        <tr>
+           <th>Id</th>
+           <th>Name</th>
+           <th>Price</th>
+           <th>photo_Link</th>
+           <th>Description</th>
+           <th>Unit_id</th>
+           <th>Action</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr *ngFor = "let item of items">
+           <td>{{item.Id}}</td>
+           <td>{{item.item_name}}</td>
+           <td>{{item.price}}</td>
+           <td class="text-wrap">{{item.item_photo}}</td>
+           <td>{{item.description}}</td>
+           <td>{{item.unit_id}}</td>
+           <td><button class="btn btn-sm btn-info">edit</button></td>
+           <td><button class="btn btn-sm btn-danger" (click)="confirmdeletion(item.Id)">delete</button></td>
+        </tr>
+     </tbody>
+  </table>
+</div>
+<!-- this modal is use for after click on delete button  -->
+<!-- modal section  -->
+<div class="backdrop" [ngStyle]="{'display':isDelete}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':isDelete}">
+  <div class="modal-dialog" role="document">
+     <!-- modal content  -->
+     <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="close" aria-label="Close" (click)="onCloseHandled('delete')"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <!-- model body section -->
+        <div class="modal-body">
+           <form>
+              <div class="form-group">
+                 <span><button class="btn btn-sm btn-info"(click)= "deleteItem()">Yes</button></span> 
+                 <span><button class="btn btn-sm btn-danger" (click)="onCloseHandled('delete')">No</button></span>
+              </div>
+           </form>
+        </div>
+        <!-- Modal footer-->
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger"  (click)="onCloseHandled('delete')">Cancel</button>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="container">
+<!-- open a modal window by clicking button-->
+<button type="button" class="btn btn-info btn-sm" (click)="openModal()">New create item</button>
+<!-- Modal section -->
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+     <!-- Modal content-->
+     <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="close" aria-label="Close" (click)="onCloseHandled('addItem')"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <!-- model body section -->
+        <div class="modal-body">
+           <form [formGroup]="itemForm">
+              <div class="form-group">
+                 <label>Id</label>
+                 <input type="integer"  formControlName="Id" required>
+              </div>
+              <div class="form-group">
+                 <label>item_name</label>
+                 <input type="text"  formControlName="item_name" required>
+              </div>
+              <div class="form-group">
+                 <label>price</label>
+                 <input type="text"  formControlName="price" required>
+              </div>
+              <div class="form-group">
+                 <label>item_photo</label>
+                 <input type="text"  formControlName="item_photo" required>
+              </div>
+              <div class="form-group">
+                 <label>description</label>
+                 <input type="text"  formControlName="description" required>
+              </div>
+              <div class="form-group">
+                 <label>unit_id </label>
+                 <input type="text"  formControlName="unit_id" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmit(itemForm)">Add</button>
+           </form>
+        </div>
+        <!-- Modal footer-->
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger"  (click)="onCloseHandled('addItem')">Close</button>
+        </div>
+     </div>
+  </div>
+</div>
+</div>
