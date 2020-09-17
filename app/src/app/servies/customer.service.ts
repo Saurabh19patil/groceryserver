@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class CustomerService {
 
   constructor(private http : HttpClient) { }
+  loggedIn = false;
   
   getCustomers(){
     return this.http.get("http://localhost:5000/mycustomers/customers");
@@ -29,6 +30,20 @@ export class CustomerService {
   });
 }
 
+  loginCustomer = function (loginForm) {
+    console.log("inside service", loginForm);
 
+  //  this.http.post("http://localhost:5000/mycustomers/login/",loginForm.value).subscribe(data=>
+  //   console.log(data)
+  //   );
+ let info;
+ info = this.http.post("http://localhost:5000/mycustomers/login/",loginForm.value).subscribe(data=>info=data)
+  console.log("agsfash", info)
+    
+  }
+
+  isAdminRights():boolean{
+    return this.loggedIn;
+  }
 
 }

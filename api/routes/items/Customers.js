@@ -3,6 +3,7 @@ var mycustomers = express.Router();
 var connection = require('../../database/database.js')
 
 
+
 mycustomers.get('/customers', function (req, resp) {
 	connection.query("select * from customer", function (error, rows) {
 		if (!!error) {
@@ -17,22 +18,23 @@ mycustomers.get('/customers', function (req, resp) {
 
 
 mycustomers.post('/customers', function (req, resp) {
-	console.log("shhssh:", req.body)
+	var date = new Date();
+	console.log("shhssh:" ,11212)
+	console.log("shhssh:", req.body, date.toISOString().slice(0,19).replace('T', ' '))
 	let data = {
-		Id: req.body.Id,
 		first_name: req.body.first_name,
 		last_name: req.body.last_name,
 		user_name: req.body.user_name,
 		password: req.body.password,
-		time_inserted: req.body.time_inserted,
-		confirmation_code: req.body.confirmation_code,
-		time_confirmed: req.body.time_confirmed,
+		time_inserted: date.toISOString().slice(0,19).replace('T', ' '),
+		confirmation_code: 'confirm',
+		time_confirmed: date.toISOString().slice(0,19).replace('T', ' '),
 		contact_email: req.body.contact_email,
 		contact_phone: req.body.contact_phone,
-		city_id: req.body.city_id,
-		address: req.body.address,
-		delivery_city_id: req.body.delivery_city_id,
-		delivery_address: req.body.delivery_address
+		city_id: null,
+		address: null,
+		delivery_city_id: null,
+		delivery_address: null
 	};
 	// console.log("shhssh:", req.body)
 	let sql = "INSERT INTO customer SET ?";
@@ -52,6 +54,39 @@ mycustomers.post('/customers', function (req, resp) {
 		}
 	});
 });
+
+
+// mycustomers.post('/login', function (req, resp) {
+// 	var date = new Date();
+// 	console.log("shhssh:" ,11212)
+// 	console.log("shhssh:", req.body);
+
+// });
+
+mycustomers.post('/login', function (req, res) {
+	console.log("shhssh:", req.body);
+   
+    let l_name = req.body.contact_email;
+    let l_pwd = req.body.password;
+	connection.query('SELECT Id FROM customer where contact_email=? AND password=?',[l_name ,l_pwd] ,function (error, result) {
+			if (!!error) {
+				console.log('error in the query');
+			} else {
+				console.log('successful query');
+				//console.log(rows);
+				res.send(JSON.stringify({
+					"status": 200,
+					"error": null,
+					"response": result
+				}));
+
+			}
+		});
+	
+	});
+
+
+
 
 
 mycustomers.delete('/customers/:id', (req, res) => {

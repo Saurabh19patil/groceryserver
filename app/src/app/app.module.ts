@@ -32,6 +32,7 @@ import { OrderStatusComponent } from './order-status/order-status.component';
 import { PlaceOrderComponent } from './place-order/place-order.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     OrderItemComponent,
     OrderStatusComponent,
     PlaceOrderComponent,
+    RegisterComponent,
+    
     
   ],
   imports: [

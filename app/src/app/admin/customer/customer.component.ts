@@ -11,7 +11,9 @@ import { timer } from "rxjs";
 export class CustomerComponent implements OnInit {
 	customers: any;
 
-	display = "none";
+	
+
+	
 
 	// customerForm = new FormGroup({
 	//       Id: new FormControl(''),
@@ -45,7 +47,9 @@ export class CustomerComponent implements OnInit {
 		console.log("inside", id);
 		this._customerService.deleteCustomer(id);
 	};
-
+	 
+	
+	
 	// onSubmit(customerForm){
 	//   console.log(customerForm.value);
 	//   this._customerService.createCustomer(customerForm)
