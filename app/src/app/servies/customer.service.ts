@@ -6,43 +6,52 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CustomerService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
   loggedIn = false;
-  
-  getCustomers(){
+
+  getCustomers() {
     return this.http.get("http://localhost:5000/mycustomers/customers");
   }
 
-  deleteCustomer= function (id) {
+  deleteCustomer = function (id) {
     console.log("inside service", id);
-    this.http.delete("http://localhost:5000/mycustomers/customers/"+id).subscribe(data=>{
+    this.http.delete("http://localhost:5000/mycustomers/customers/" + id).subscribe(data => {
       console.log(data);
-      
-      
+
+
     });
   }
 
   createCustomer = function (customerForm) {
     console.log("inside service", customerForm);
-    this.http.post("http://localhost:5000/mycustomers/customers/",customerForm.value).subscribe(data=>{
+    this.http.post("http://localhost:5000/mycustomers/customers/", customerForm.value).subscribe(data => {
       console.log(data);
-  
-  });
-}
 
-  loginCustomer = function (loginForm) {
-    console.log("inside service", loginForm);
+    });
+  }
+
+  // loginCustomer = function (loginForm) {
+  //   console.log("inside service", loginForm);
 
   //  this.http.post("http://localhost:5000/mycustomers/login/",loginForm.value).subscribe(data=>
   //   console.log(data)
   //   );
- let info;
- info = this.http.post("http://localhost:5000/mycustomers/login/",loginForm.value).subscribe(data=>info=data)
-  console.log("agsfash", info)
+  loginCustomer = function (loginForm) {
+    console.log("inside service", loginForm);
+    let info;
+     this.http.post("http://localhost:5000/mycustomers/login/", loginForm.value).subscribe(data => { 
+      info = data ;
+      console.log("agsfash", info, info.response.length)
+      if (info.response.length !=0){
+        this.loggedIn = true;
+      }
+      else this.loggedIn = false;
+    })
     
+
   }
 
-  isAdminRights():boolean{
+  isAdminRights(): boolean {
     return this.loggedIn;
   }
 
