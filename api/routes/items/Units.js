@@ -2,6 +2,8 @@ var express = require('express');
 var myunits = express.Router();
 var connection = require('../../database/database.js')
 
+
+//get method for unit
 myunits.get('/units', function (req, resp) {
 	connection.query("select * from unit", function (error, rows) {
 		if (!!error) {
@@ -15,7 +17,7 @@ myunits.get('/units', function (req, resp) {
 	});
 });
 
-
+//post method for unit
 myunits.post('/units', function (req, resp) {
 	console.log("shhssh:", req.body)
 	let data = {
@@ -55,7 +57,7 @@ myunits.post('/units', function (req, resp) {
 //        });
 //        });
 
-
+//delete method for unit 
 myunits.delete('/units/:id', (req, res) => {
 	let sql = "DELETE FROM unit WHERE Id=" + req.params.id + "";
 	let query = connection.query(sql, (err, results) => {
@@ -67,5 +69,8 @@ myunits.delete('/units/:id', (req, res) => {
 		}));
 	});
 });
+
+
+// export this router to use in our server.js
 
 module.exports = myunits;

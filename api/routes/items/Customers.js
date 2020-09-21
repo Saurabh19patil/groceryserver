@@ -3,7 +3,7 @@ var mycustomers = express.Router();
 var connection = require('../../database/database.js')
 
 
-
+// get method for customer table 
 mycustomers.get('/customers', function (req, resp) {
 	connection.query("select * from customer", function (error, rows) {
 		if (!!error) {
@@ -16,7 +16,7 @@ mycustomers.get('/customers', function (req, resp) {
 	})
 })
 
-
+//post method for customer
 mycustomers.post('/customers', function (req, resp) {
 	var date = new Date();
 	console.log("shhssh:" ,11212)
@@ -90,7 +90,7 @@ mycustomers.post('/login', function (req, res) {
 
 
 
-
+//delete method for customer
 mycustomers.delete('/customers/:id', (req, res) => {
 	let sql = "DELETE FROM customer WHERE Id=" + req.params.id + "";
 	let query = connection.query(sql, (err, results) => {
@@ -103,4 +103,6 @@ mycustomers.delete('/customers/:id', (req, res) => {
 	});
 });
 
+
+// export this router to use in our server.js
 module.exports = mycustomers;

@@ -8,6 +8,7 @@ export class NotesService {
 
   constructor(private http : HttpClient) { }
 
+  // get api call for note
   getNotes(){
     return this.http.get("http://localhost:5000/notes")
   }

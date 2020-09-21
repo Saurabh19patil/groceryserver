@@ -2,7 +2,7 @@ var express = require('Express');
 var myitems = express.Router();
 var connection = require('../../database/database.js')
 
-
+//get method for item
 myitems.get('/items', (req, res) => {
 
 	connection.query("select * from item", function (error, rows) {
@@ -31,7 +31,7 @@ myitems.get('/items', (req, res) => {
 //      });
 //   });
 
-
+//post method for item
 myitems.post('/items', function (req, resp) {
 	//console.log("shhssh:", req.body)
 	let data = {
@@ -60,6 +60,8 @@ myitems.post('/items', function (req, resp) {
 	});
 });
 
+
+//delete method for item
 myitems.delete('/items/:id', (req, res) => {
 	let sql = "DELETE FROM item WHERE Id=" + req.params.id + "";
 	let query = connection.query(sql, (err, results) => {

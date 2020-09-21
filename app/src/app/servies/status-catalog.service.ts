@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class StatusCatalogService {
 
   constructor(private http : HttpClient) { }
-
+//get api call for status catalog
   getStatusCatalogs(){
     return this.http.get("http://localhost:5000/status_catalog")
   }

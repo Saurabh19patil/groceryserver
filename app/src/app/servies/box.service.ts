@@ -8,6 +8,7 @@ export class BoxService {
 
   constructor(private http : HttpClient) { }
 
+  //get api call for box
   getBoxes(){
     return this.http.get("http://localhost:5000/boxes");
   }

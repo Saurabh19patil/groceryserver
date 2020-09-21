@@ -4,9 +4,11 @@ var connection = mysql.createConnection({
 	user: 'root',
 	password: 'password',
 	database: 'grocerydelivery',
-	// socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
+	
 })
 
+
+//This is for connect to my sql server
 connection.connect(function (err) {
 
 	if (err) {
@@ -18,4 +20,6 @@ connection.connect(function (err) {
 
 });
 
+
+// export this router to use in our customer.js,units.js,unit.js
 module.exports = connection;
