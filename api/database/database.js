@@ -3,8 +3,8 @@ var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'password',
-	database: 'grocerydelivery'
-
+	database: 'grocerydelivery',
+	// socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
 })
 
 connection.connect(function (err) {

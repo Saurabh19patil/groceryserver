@@ -33,6 +33,8 @@ import { PlaceOrderComponent } from './place-order/place-order.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import{ ActivateGuard } from './../activate.guard';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,8 @@ import { RegisterComponent } from './register/register.component';
     OrderItemService,
     OrderStatusService,
     PlaceOrderService,
-    StatusCatalogService
+    StatusCatalogService,
+    ActivateGuard
     
   ],
   bootstrap: [AppComponent]

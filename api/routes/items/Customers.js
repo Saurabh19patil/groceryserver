@@ -63,15 +63,17 @@ mycustomers.post('/customers', function (req, resp) {
 
 // });
 
+
+//we post the email and possword in the login form then the in this query is req to database please check this email and password is their or not, its their then query is successful or response is come with ID. show otherwise show error in the query.                                                                              
 mycustomers.post('/login', function (req, res) {
-	console.log("shhssh:", req.body);
+	console.log("shhssh:", req.body);                                                 
    
     let l_name = req.body.contact_email;
     let l_pwd = req.body.password;
 	connection.query('SELECT Id FROM customer where contact_email=? AND password=?',[l_name ,l_pwd] ,function (error, result) {
 			if (!!error) {
 				console.log('error in the query');
-			} else {
+			} else { 
 				console.log('successful query');
 				//console.log(rows);
 				res.send(JSON.stringify({

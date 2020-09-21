@@ -7,10 +7,11 @@ import { HttpClient } from "@angular/common/http";
 export class ItemService {
 	constructor(private http: HttpClient) {}
 
+	//all items are get. here get method calling.
 	getItems() {
 		return this.http.get("http://localhost:5000/myitems/items");
 	}
-
+	//delete item from item table. delete method call here
 	deleteItem = function(id) {
 		console.log("inside service", id);
 		this.http
@@ -20,6 +21,7 @@ export class ItemService {
 			});
 	};
 
+	// post method call here
 	createItem = function(itemForm) {
 		console.log("inside service", itemForm);
 		this.http
