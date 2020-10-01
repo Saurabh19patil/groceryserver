@@ -1,9 +1,12 @@
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 let mysql = require('mysql');
 var myitems = require('./routes/items/Items.js');
 var myunits = require('./routes/items/Units.js');
 var mycustomers = require('./routes/items/Customers.js');
+
 
 // create express app
 const app = express();
@@ -58,6 +61,10 @@ connection.connect(function (err) {
 	console.log('connected to mysql server.');
 
 });
+
+
+
+
 
 // define a root route
 // app.get('/', (req, res) => {
