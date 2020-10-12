@@ -1,8 +1,11 @@
+// express labrery use
 var express = require('Express');
+//here express is use also routing in express
 var myitems = express.Router();
+//this is ue for mysqlconnection that code is writen in database.js and here import that code.
 var connection = require('../../database/database.js')
 
-//get method for item
+//get method for items api this function call in iteam.service.ts
 myitems.get('/items', (req, res) => {
 
 	connection.query("select * from item", function (error, rows) {

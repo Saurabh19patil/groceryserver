@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
 	providedIn: "root"
@@ -9,10 +9,17 @@ export class CustomerService {
 
 	//this is use for dashbord when click on dashboard then dashboard is doesn't open.
 	loggedIn = false;
+	token = null;
+
 
 	//gets here all customers table details or calling get method.
 	getCustomers() {
-		return this.http.get("http://localhost:5000/mycustomers/customers");
+		var header	= {
+			headers: new HttpHeaders()
+			  .set('Authorization', 'bearer ' + this.token)
+		  }
+	
+		return this.http.get("http://localhost:5000/mycustomers/customers", header);
 	}
 
 	//this is use for delete perticular customer from customer table. this is calling delete method
@@ -51,9 +58,11 @@ export class CustomerService {
 			.subscribe(data => {
 				info = data;
 				//here info is and response lenght is print in console
-				console.log("agsfash", info, info.response.length);
-				if (info.response.length != 0) {
+				console.log("agsfash", info, info.id);
+				if (info.id) {
+					console.log("inside",true);
 					this.loggedIn = true;
+					this.token = info.accessToken ;
 				} else this.loggedIn = false;
 			});
 	};
