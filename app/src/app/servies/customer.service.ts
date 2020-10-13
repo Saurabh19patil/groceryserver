@@ -16,9 +16,11 @@ export class CustomerService {
 	getCustomers() {
 		var header	= {
 			headers: new HttpHeaders()
+			//here bearer and token send 
 			  .set('Authorization', 'bearer ' + this.token)
 		  }
 	
+		  //hear return the all customer list 
 		return this.http.get("http://localhost:5000/mycustomers/customers", header);
 	}
 

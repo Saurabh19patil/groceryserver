@@ -1,10 +1,11 @@
 var express = require('express');
 var myunits = express.Router();
 var connection = require('../../database/database.js')
+var auth = require('../../database/jwtauthenticate.js')
 
 
 //get method for unit
-myunits.get('/units', function (req, resp) {
+myunits.get('/units', auth,function (req, resp) {
 	connection.query("select * from unit", function (error, rows) {
 		if (!!error) {
 			console.log('error in the query');

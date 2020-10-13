@@ -1,14 +1,20 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { CustomerService } from "./customer.service";
 @Injectable({
 	providedIn: "root"
 })
 export class UnitService {
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient, private _customerService: CustomerService) {}
 
 	// get api or method call
 	getUnits() {
-		return this.http.get("http://localhost:5000/myunits/units");
+		var header	= {
+			headers: new HttpHeaders()
+			//here bearer and token send 
+			  .set('Authorization', 'bearer ' + this._customerService.token)
+		  }
+		return this.http.get("http://localhost:5000/myunits/units", header);
 	}
 
 	// delete api call

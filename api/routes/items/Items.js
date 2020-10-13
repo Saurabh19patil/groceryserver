@@ -3,10 +3,12 @@ var express = require('Express');
 //here express is use also routing in express
 var myitems = express.Router();
 //this is ue for mysqlconnection that code is writen in database.js and here import that code.
-var connection = require('../../database/database.js')
+var connection = require('../../database/database.js');
+//this is initilize to the database folder from jwtauthenticate.js file  
+var auth = require('../../database/jwtauthenticate.js')
 
-//get method for items api this function call in iteam.service.ts
-myitems.get('/items', (req, res) => {
+//get method for items api this function call in iteam.service.ts and also use their auth function for autherization
+myitems.get('/items', auth,(req, res) => {
 
 	connection.query("select * from item", function (error, rows) {
 		if (!!error) {
@@ -62,6 +64,7 @@ myitems.post('/items', function (req, resp) {
 		}
 	});
 });
+
 
 
 //delete method for item
