@@ -141,28 +141,6 @@ mycustomers.post('/login', async(req, res) => {
 
 });
 
-//create middle wear  which we are going to put on our /customer in get method above here  which is going to authenticate our token.
-//so write here function and when write this function then write in get customer methode their one function that is authenticateToken
-// function authenticateToken(req, res, next ) {
-// 	// this is formet of berer followed by token 
-// 	const authHeader = req.headers['authorization']
-// 	console.log("authHeader", authHeader);
-// 	//this is for token portion
-// 	const token = authHeader && authHeader.split(' ')[1]
-
-// 	//console.log("token",token);
-// 	if (token == null) return res.sendStatus(401)
-// 	// console.log("fox", token);
-
-// 	//  we know the valid token so varify or check here send token and our server token is match or not 
-// 	jwt.verify(token, '014ebfdeeb80dbdce4b912c9b7cf4ec08a9323739932e4a9ceae34b5edf56af4e51056b0b291174513572d1a73eac5510e7c81548161009099fba5043b803bff', (err, user ) => {
-// 		if(err) return res.sendStatus(403)
-// 		//console.log("dhgdgdgdjgdjgdjgd", token, req.user);
-// 		req.user = user 
-// 		next()
-// 	})
-
-// }
 
 
 
